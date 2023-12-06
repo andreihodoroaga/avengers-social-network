@@ -26,4 +26,5 @@ const sequelize = new Sequelize({
   storage: 'tables.db'
 });
 
-module.exports = { posts };
+sequelize.sync();
+module.exports = { sequelize };
