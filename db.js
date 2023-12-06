@@ -1,3 +1,5 @@
+const { Sequelize } = require('sequelize');
+
 const posts = [
   {
     post_id: "1",
@@ -18,5 +20,10 @@ const posts = [
     parent_post_id: null,
   },
 ];
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: 'tables.db'
+});
 
 module.exports = { posts };

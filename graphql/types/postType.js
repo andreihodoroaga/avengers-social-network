@@ -5,6 +5,35 @@ const {
   GraphQLString,
 } = require("graphql");
 
+const { Sequelize, DataTypes } = require('sequelize');
+
+const Post = sequelize.define('Post', {
+  post_id: {
+    type: DataTypes.INTEGER, 
+    allowNull: false,
+    primaryKey: true,
+  },
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    // check foreign key definition
+  },
+  parent_post_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    default: null 
+  },
+  text: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  timestamp: {
+    type: DataTypes.DATE, 
+    allowNull: false,
+    // default: currentTimestamp
+  }
+});
+
 const postType = new GraphQLObjectType({
   name: "Post",
   fields: {
