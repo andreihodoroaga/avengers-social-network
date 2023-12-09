@@ -1,35 +1,31 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLString } = require("graphql");
+const CustomDateType = require("./utils");
 
-const User = sequelize.define('User', {
+const userType = new GraphQLObjectType({
+  name: "User",
+  fields: {
     user_id: {
-      type: DataTypes.INTEGER, 
-      allowNull: false,
-      primaryKey: true,
+      type: new GraphQLNonNull(GraphQLID),
     },
     username: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
+      type: new GraphQLNonNull(GraphQLString),
     },
     first_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: new GraphQLNonNull(GraphQLString),
     },
     last_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: new GraphQLNonNull(GraphQLString),
     },
     date_of_birth: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: new GraphQLNonNull(CustomDateType),
     },
     bio: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: new GraphQLNonNull(GraphQLString),
     },
     profile_picture: {
-      type: DataTypes.STRING,
-      allowNull: true
-    }
+      type: new GraphQLNonNull(GraphQLString),
+    },
+  },
 });
-  
+
+module.exports = userType;
