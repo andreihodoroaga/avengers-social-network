@@ -1,6 +1,6 @@
 const { GraphQLNonNull, GraphQLID } = require("graphql");
-const db = require("../../models");
-const postType = require("../types/postType");
+const db = require("../../../models");
+const postType = require("../../types/postType");
 
 const postQuery = {
   type: postType,

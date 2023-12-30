@@ -1,7 +1,7 @@
-const updateUserResolver = require("../resolvers/updateUserResolver");
+const updateUserResolver = require("../../resolvers/user/updateUserResolver");
 const { GraphQLNonNull, GraphQLID } = require("graphql");
-const userType = require("../types/userType");
-const userInputType = require("../types/userInputType");
+const userType = require("../../types/user/userType");
+const userInputType = require("../../types/user/userInputType");
 
 const updateUserMutation = {
   type: userType,

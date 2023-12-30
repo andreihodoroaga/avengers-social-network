@@ -1,7 +1,7 @@
 const { GraphQLScalarType } = require('graphql');
 
 const CustomDateType = new GraphQLScalarType({
-  name: 'CustomOutputDate',
+  name: 'CustomDate',
   description: 'Date custom output scalar type',
   serialize(value) {
     return new Date(value).toISOString().split('T')[0];

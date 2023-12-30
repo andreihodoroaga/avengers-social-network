@@ -1,4 +1,4 @@
-const db = require("../../models");
+const db = require("../../../models");
 
 const deletePostResolver = async (_, { post_id }) => {
   const targetPost = await db.Post.findByPk(post_id);

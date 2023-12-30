@@ -25,6 +25,9 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
+db['UserInteraction'].belongsTo(db['User'], { as: "initiator", foreignKey: "user_id_initiator", targetKey: "user_id" });
+db['UserInteraction'].belongsTo(db['User'], { as: "recipient", foreignKey: "user_id_recipient", targetKey: "user_id" });
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
