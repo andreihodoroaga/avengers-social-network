@@ -17,10 +17,10 @@ const userInputType = new GraphQLInputObjectType({
       type: new GraphQLNonNull(CustomDateType),
     },
     bio: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
     profile_picture: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLID,
     },
   },
 });

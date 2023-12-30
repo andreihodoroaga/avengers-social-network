@@ -17,6 +17,9 @@ const deleteEventMutation = require("./mutations/event/deleteEventMutation");
 const participateEventMutation = require("./mutations/event/participateEventMutation");
 const withdrawEventMutation = require("./mutations/event/withdrawEventMutation");
 
+const createUserImageMutation = require("./mutations/userImage/createUserImageMutation");
+const deleteUserImageMutation = require("./mutations/userImage/deleteUserImageMutation");
+
 const mutationType = new GraphQLObjectType({
   name: "Mutation",
   fields: {
@@ -35,6 +38,8 @@ const mutationType = new GraphQLObjectType({
     deleteEvent: deleteEventMutation,
     participateInEvent: participateEventMutation,
     withdrawFromEvent: withdrawEventMutation,
+    uploadProfilePicture: createUserImageMutation,
+    deleteProfilePicture: deleteUserImageMutation,
   },
 });
 

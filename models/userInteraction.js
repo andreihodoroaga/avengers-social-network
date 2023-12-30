@@ -10,6 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      UserInteraction.belongsTo(models.User, { 
+        as: "initiator", 
+        foreignKey: "user_id_initiator", 
+        targetKey: "user_id"
+      });
+      UserInteraction.belongsTo(models.User, {
+        as: "recipient", 
+        foreignKey: "user_id_recipient", 
+        targetKey: "user_id" 
+      });
     }
   }
   UserInteraction.init(

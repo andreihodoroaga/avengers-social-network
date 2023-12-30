@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.UserPostInteraction, {
         foreignKey: "user_id",
       });
+      User.belongsToMany(models.Event, { 
+        through: models.EventParticipant, 
+        foreignKey: "participant_id", 
+        otherKey: "event_id"
+      });
+      
+      User.hasOne(models.UserImage, {
+        foreignKey: "user_id",
+        as: "user_image",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+      });
     }
   }
   User.init(
@@ -42,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(100),
       },
       profile_picture: {
-        type: DataTypes.STRING(250),
+        type: DataTypes.INTEGER,
       },
     },
     {
