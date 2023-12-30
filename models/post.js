@@ -1,6 +1,14 @@
 "use strict";
 const { Model } = require("sequelize");
 
+function countInteractions(userPostInteractions, interactionType) {
+  if (userPostInteractions) {
+    return userPostInteractions.filter(interaction => interaction.interaction_type === interactionType).length;
+  } else {
+    return 0;
+  }
+}
+
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     static associate(models) {
@@ -39,6 +47,28 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      no_likes: {
+        type: DataTypes.VIRTUAL,
+        async get() {
+          const userPostInteractions = await this.getUserPostInteractions();
+          return countInteractions(userPostInteractions, 'like');
+        }
+      },
+      no_bookmarks: {
+        type: DataTypes.VIRTUAL,
+        async get() {
+          const userPostInteractions = await this.getUserPostInteractions();
+          return countInteractions(userPostInteractions, 'bookmark');
+        }
+      },
+      
+      no_reposts: {
+        type: DataTypes.VIRTUAL,
+        async get() {
+          const userPostInteractions = await this.getUserPostInteractions();
+          return countInteractions(userPostInteractions, 'repost');
+        }
       }
     },
     {

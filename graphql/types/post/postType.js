@@ -3,6 +3,7 @@ const {
   GraphQLNonNull,
   GraphQLID,
   GraphQLString,
+  GraphQLInt
 } = require("graphql");
 const CustomDateType = require("../customDateType");
 
@@ -23,7 +24,16 @@ const postType = new GraphQLObjectType({
     },
     timestamp: {
       type: new GraphQLNonNull(CustomDateType),
-    }
+    },
+    no_likes: {
+      type: new GraphQLNonNull(GraphQLInt)
+    },
+    no_bookmarks: {
+      type: new GraphQLNonNull(GraphQLInt)
+    },
+    no_reposts: {
+      type: new GraphQLNonNull(GraphQLInt)
+    },
   },
 });
 
