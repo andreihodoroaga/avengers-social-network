@@ -1,4 +1,4 @@
-const db = require("../../models");
+const db = require("../../../models");
 
 const updateUserResolver = async (_, { user_id, user }) => {
   const targetUser = await db.User.findByPk(user_id);

@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLString } = require("graphql");
-const CustomDateType = require("./customDateType");
+const CustomDateType = require("../customDateType");
 
 const userType = new GraphQLObjectType({
   name: "User",

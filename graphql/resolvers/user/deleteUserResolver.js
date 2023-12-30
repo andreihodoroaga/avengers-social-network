@@ -1,4 +1,4 @@
-const db = require("../../models");
+const db = require("../../../models");
 
 const deleteUserResolver = async (_, { user_id }) => {
   const targetUser = await db.User.findByPk(user_id);

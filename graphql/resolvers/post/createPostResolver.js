@@ -1,4 +1,4 @@
-const db = require("../../models");
+const db = require("../../../models");
 
 const createPostResolver = async (_, { post }) => {
   const user = await db.User.findByPk(post.user_id);

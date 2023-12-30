@@ -1,4 +1,4 @@
-const deleteUserResolver = require("../resolvers/deleteUserResolver");
+const deleteUserResolver = require("../../resolvers/user/deleteUserResolver");
 const { GraphQLNonNull, GraphQLID, GraphQLBoolean } = require("graphql");
 
 const deleteUserMutation = {
