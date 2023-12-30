@@ -1,6 +1,6 @@
 const { GraphQLNonNull, GraphQLID } = require("graphql");
-const db = require("../../../models");
 const postType = require("../../types/post/postType");
+const findResolver = require("../../resolvers/findResolver");
 
 const postQuery = {
   type: postType,
@@ -9,7 +9,7 @@ const postQuery = {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (_, { post_id }) => db.Post.findByPk(post_id),
+  resolve: findResolver('Post'),
 };
 
 module.exports = postQuery;

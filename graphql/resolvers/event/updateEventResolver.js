@@ -7,8 +7,12 @@ const updateEventResolver = async (_, { event_id, event }) => {
     return null;
   }
 
-  const updatedEvent = await db.Event.update({
+  const updatedEvent = await targetEvent.update({
     ...event,
+  }, {
+    where: {
+      event_id: event_id
+    },
   });
 
   return updatedEvent;

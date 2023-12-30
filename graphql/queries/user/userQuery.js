@@ -1,6 +1,6 @@
 const { GraphQLNonNull, GraphQLID } = require("graphql");
-const db = require("../../../models");
 const userType = require("../../types/user/userType");
+const findResolver = require("../../resolvers/findResolver");
 
 const userQuery = {
   type: userType,
@@ -9,7 +9,7 @@ const userQuery = {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (_, { user_id }) => db.User.findByPk(user_id),
+  resolve: findResolver('User'),
 };
 
 module.exports = userQuery;
