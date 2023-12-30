@@ -1,7 +1,7 @@
 const updatePostResolver = require("../../resolvers/post/updatePostResolver");
 const { GraphQLNonNull, GraphQLID } = require("graphql");
-const postType = require("../../types/postType");
-const postInputType = require("../../types/postInputType");
+const postType = require("../../types/post/postType");
+const postInputType = require("../../types/post/postInputType");
 
 const updatePostMutation = {
   type: postType,

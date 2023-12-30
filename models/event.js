@@ -2,7 +2,7 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class UserInteraction extends Model {
+  class Event extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,29 +12,36 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  UserInteraction.init(
+  Event.init(
     {
-      user_interaction_id: {
+      event_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      interaction_type: {
-        type: DataTypes.ENUM,
-        values: ["follow", "poke"],
+      event_name: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      timestamp: {
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      event_timestamp: {
         type: DataTypes.DATE,
+        allowNull: false,
+      },
+      details: {
+        type: DataTypes.STRING,
         allowNull: false,
       }
     },
     {
       sequelize,
-      modelName: "UserInteraction",
+      modelName: "Event",
     }
   );
 
-  return UserInteraction;
+  return Event;
 };

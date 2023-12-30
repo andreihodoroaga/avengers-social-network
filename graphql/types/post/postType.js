@@ -4,7 +4,7 @@ const {
   GraphQLID,
   GraphQLString,
 } = require("graphql");
-const CustomDateType = require("./customDateType");
+const CustomDateType = require("../customDateType");
 
 const postType = new GraphQLObjectType({
   name: "Post",

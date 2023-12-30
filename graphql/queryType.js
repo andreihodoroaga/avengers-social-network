@@ -1,11 +1,16 @@
 const { GraphQLObjectType } = require("graphql");
+
 const postQuery = require("./queries/post/postQuery");
 const postsQuery = require("./queries/post/postsQuery");
+
 const usersQuery = require("./queries/user/usersQuery");
 const userQuery = require("./queries/user/userQuery");
 
 const userInteractionQuery = require("./queries/userInteraction/userInteractionQuery");
 const userInteractionsQuery = require("./queries/userInteraction/userInteractionsQuery");
+
+const eventQuery = require("./queries/event/eventQuery");
+const eventsQuery = require("./queries/event/eventsQuery");
 
 const queryType = new GraphQLObjectType({
   name: "Query",
@@ -16,6 +21,8 @@ const queryType = new GraphQLObjectType({
     posts: postsQuery,
     userInteraction: userInteractionQuery,
     userInteractions: userInteractionsQuery,
+    event: eventQuery,
+    events: eventsQuery,
   },
 });
 

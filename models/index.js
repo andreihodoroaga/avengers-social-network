@@ -28,6 +28,10 @@ fs.readdirSync(__dirname)
 db['UserInteraction'].belongsTo(db['User'], { as: "initiator", foreignKey: "user_id_initiator", targetKey: "user_id" });
 db['UserInteraction'].belongsTo(db['User'], { as: "recipient", foreignKey: "user_id_recipient", targetKey: "user_id" });
 
+db['User'].belongsToMany(db['Event'], { through: db['EventParticipant'], foreignKey: "participant_id", otherKey: "event_id"});
+db['Event'].belongsToMany(db['User'], { through: db['EventParticipant'], foreignKey: "event_id", otherKey: "participant_id", as: "event_participants" });
+db['Event'].belongsTo(db['User'], { as: "organiser", foreignKey: "event_organiser_user_id", targetKey: "user_id" });
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
