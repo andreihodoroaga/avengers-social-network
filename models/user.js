@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
+      password: {
+        type: DataTypes.STRING(100),
+        allowNull: false,   
+      },
       username: {
         type: DataTypes.STRING,
         allowNull: false,
