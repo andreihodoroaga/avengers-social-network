@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
         targetKey: 'user_id',
       });
+      Post.hasMany(models.UserPostInteraction, {
+        foreignKey: "post_id",
+      });
     }
   }
 

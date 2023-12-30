@@ -1,7 +1,7 @@
 const { GraphQLEnumType } = require("graphql");
 
 const interactionType = new GraphQLEnumType({
-    name: 'InteractionType',
+    name: 'UserInteractionType',
     values: {
         FOLLOW: { value: 'follow' },
         POKE: { value: 'poke' }

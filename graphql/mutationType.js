@@ -8,6 +8,8 @@ const updateUserMutation = require("./mutations/user/updateUserMutation");
 
 const createUserInteractionMutation = require("./mutations/userInteraction/createUserInteractionMutation");
 const deleteUserInteractionMutation = require("./mutations/userInteraction/deleteUserInteractionMutation");
+const createPostInteractionMutation = require("./mutations/postInteraction/createPostInteractionMutation");
+const deletePostInteractionMutation = require("./mutations/postInteraction/deletePostInteractionMutation");
 
 const createEventMutation = require("./mutations/event/createEventMutation");
 const updateEventMutation = require("./mutations/event/updateEventMutation");
@@ -26,6 +28,8 @@ const mutationType = new GraphQLObjectType({
     deletePost: deletePostMutation,
     createUserInteraction: createUserInteractionMutation,
     deleteUserInteraction: deleteUserInteractionMutation,
+    createPostInteraction: createPostInteractionMutation,
+    deletePostInteraction: deletePostInteractionMutation,
     createEvent: createEventMutation,
     updateEvent: updateEventMutation,
     deleteEvent: deleteEventMutation,

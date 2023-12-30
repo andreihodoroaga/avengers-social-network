@@ -3,7 +3,6 @@ const db = require("../../../models");
 const createUserInteractionResolver = async (_, { userInteraction }) => {
   const userInteractionType = userInteraction.interaction_type;
 
-  console.log(userInteraction);
   if (userInteractionType === "follow") {
     // check no duplicate follow
     const checkFollow = await db.UserInteraction.findOne({
