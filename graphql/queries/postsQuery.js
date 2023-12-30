@@ -4,7 +4,7 @@ const db = require("../../models");
 
 const postsQuery = {
   type: new GraphQLList(postType),
-  resolve: () => [],
+  resolve: () => db.Post.findAll(),
 };
 
 module.exports = postsQuery;

@@ -1,14 +1,14 @@
-const postType = require("../types/postType");
 const createPostResolver = require("../resolvers/createPostResolver");
-
-const { parent_post_id, text } = postType.getFields();
+const postInputType = require("../types/postInputType");
+const postType = require("../types/postType");
 
 const createPostMutation = {
   type: postType,
-  // post_id and timestamp are added by the DB
+
   args: {
-    parent_post_id,
-    text,
+    post: {
+      type: postInputType,
+    },
   },
   resolve: createPostResolver,
 };

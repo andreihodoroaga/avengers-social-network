@@ -1,8 +1,10 @@
 const { GraphQLObjectType } = require("graphql");
-const createPostMutation = require("./mutations/createPostMutation");
 const createUserMutation = require("./mutations/createUserMutation");
 const deleteUserMutation = require("./mutations/deleteUserMutation");
 const updateUserMutation = require("./mutations/updateUserMutation");
+const createPostMutation = require("./mutations/createPostMutation");
+const deletePostMutation = require("./mutations/deletePostMutation");
+const updatePostMutation = require("./mutations/updatePostMutation");
 
 const mutationType = new GraphQLObjectType({
   name: "Mutation",
@@ -10,6 +12,9 @@ const mutationType = new GraphQLObjectType({
     createUser: createUserMutation,
     updateUser: updateUserMutation,
     deleteUser: deleteUserMutation,
+    createPost: createPostMutation,
+    updatePost: updatePostMutation,
+    deletePost: deletePostMutation,
   },
 });
 

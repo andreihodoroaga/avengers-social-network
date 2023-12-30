@@ -1,17 +1,13 @@
 const {
-  GraphQLObjectType,
+  GraphQLInputObjectType,
   GraphQLNonNull,
   GraphQLID,
   GraphQLString,
 } = require("graphql");
-const CustomDateType = require("./customDateType");
 
-const postType = new GraphQLObjectType({
-  name: "Post",
+const postInputType = new GraphQLInputObjectType({
+  name: "PostInput",
   fields: {
-    post_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     user_id: {
       type: new GraphQLNonNull(GraphQLID),
     },
@@ -21,10 +17,7 @@ const postType = new GraphQLObjectType({
     text: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    timestamp: {
-      type: new GraphQLNonNull(CustomDateType),
-    }
   },
 });
 
-module.exports = postType;
+module.exports = postInputType;
