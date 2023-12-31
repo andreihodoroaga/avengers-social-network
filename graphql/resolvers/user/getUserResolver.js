@@ -17,7 +17,7 @@ const getUserResolver = async (_, { user_id }) => {
         ...targetUser.dataValues
     };
 
-    targetUser.dataValues.profile_picture = targetUser.user_image.dataValues.profile_picture_path || [];
+    targetUser.dataValues.profile_picture = targetUser.user_image ? targetUser.user_image.dataValues.profile_picture_path : null;
 
     return mappedUser;
 };

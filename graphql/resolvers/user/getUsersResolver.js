@@ -10,7 +10,7 @@ const getUsersResolver = async () => {
     });
 
     const mappedUsers = users.map(user => {
-        user.dataValues.profile_picture = user.user_image.dataValues.profile_picture_path || [];
+        user.dataValues.profile_picture = user.user_image ? user.user_image.dataValues.profile_picture_path : null;
         return {
             ...user.dataValues,
         };
