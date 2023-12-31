@@ -36,8 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       timestamp: {
-        type: DataTypes.DATE,
-        allowNull: false,
+        type: DataTypes.VIRTUAL,
+        async get() {
+          return await this.getDataValue('createdAt');
+        }
       }
     },
     {

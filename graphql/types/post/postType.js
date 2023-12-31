@@ -5,7 +5,7 @@ const {
   GraphQLString,
   GraphQLInt
 } = require("graphql");
-const CustomDateType = require("../customDateType");
+const CustomTimestampType = require("../customTimestampType");
 
 const postType = new GraphQLObjectType({
   name: "Post",
@@ -23,7 +23,7 @@ const postType = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
     },
     timestamp: {
-      type: new GraphQLNonNull(CustomDateType),
+      type: new GraphQLNonNull(CustomTimestampType),
     },
     no_likes: {
       type: new GraphQLNonNull(GraphQLInt)

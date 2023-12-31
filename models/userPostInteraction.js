@@ -40,9 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     timestamp: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+      type: DataTypes.VIRTUAL,
+      async get() {
+        return await this.getDataValue('createdAt');
+      }
     }
   }, {
     sequelize,
