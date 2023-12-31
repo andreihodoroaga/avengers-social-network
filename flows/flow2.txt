@@ -1,0 +1,9 @@
+# Flow 2 
+# 1. Signup user 2 
+# 2. Login user 2
+# 3. Follow user 1 
+# 4. Like user 1's post
+# 5. Login user 1
+# 6. Poke user 1 -> user 2 
+# 7. Create an event (as user 2)
+# 8. Join user 1 -> event 

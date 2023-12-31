@@ -1,0 +1,6 @@
+# Flow 1
+
+# 1. Signup user 1
+# 2. Login user 1
+# 3. Upload profile picture 
+# 4. Create a post 

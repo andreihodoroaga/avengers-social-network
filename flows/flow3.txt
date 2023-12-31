@@ -1,0 +1,9 @@
+ # Flow 3 
+# 1. Signup user 3 
+# 2. Login user 3 
+# 3. Attempt follow user 2 as user 1 (unauthorized)
+# 4. Upload profile picture for user 2 (unauthorized)
+# 5. Create post for user 2 (unauthorized)
+# 6. Repost user 1's post
+# 7. Get trending posts 
+# 8. View events 
