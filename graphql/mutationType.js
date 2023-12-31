@@ -21,26 +21,28 @@ const createUserImageMutation = require("./mutations/userImage/createUserImageMu
 const deleteUserImageMutation = require("./mutations/userImage/deleteUserImageMutation");
 const loginMutation = require("./mutations/login/loginMutation");
 
+const requireAuthorization = require("./operationUtils");
+
 const mutationType = new GraphQLObjectType({
   name: "Mutation",
   fields: {
     createUser: createUserMutation,
-    updateUser: updateUserMutation,
-    deleteUser: deleteUserMutation,
-    createPost: createPostMutation,
-    updatePost: updatePostMutation,
-    deletePost: deletePostMutation,
-    createUserInteraction: createUserInteractionMutation,
-    deleteUserInteraction: deleteUserInteractionMutation,
-    createPostInteraction: createPostInteractionMutation,
-    deletePostInteraction: deletePostInteractionMutation,
-    createEvent: createEventMutation,
-    updateEvent: updateEventMutation,
-    deleteEvent: deleteEventMutation,
-    participateInEvent: participateEventMutation,
-    withdrawFromEvent: withdrawEventMutation,
-    uploadProfilePicture: createUserImageMutation,
-    deleteProfilePicture: deleteUserImageMutation,
+    updateUser: requireAuthorization(updateUserMutation),
+    deleteUser: requireAuthorization(deleteUserMutation),
+    createPost: requireAuthorization(createPostMutation),
+    updatePost: requireAuthorization(updatePostMutation),
+    deletePost: requireAuthorization(deletePostMutation),
+    createUserInteraction: requireAuthorization(createUserInteractionMutation),
+    deleteUserInteraction: requireAuthorization(deleteUserInteractionMutation),
+    createPostInteraction: requireAuthorization(createPostInteractionMutation),
+    deletePostInteraction: requireAuthorization(deletePostInteractionMutation),
+    createEvent: requireAuthorization(createEventMutation),
+    updateEvent: requireAuthorization(updateEventMutation),
+    deleteEvent: requireAuthorization(deleteEventMutation),
+    participateInEvent: requireAuthorization(participateEventMutation),
+    withdrawFromEvent: requireAuthorization(withdrawEventMutation),
+    uploadProfilePicture: requireAuthorization(createUserImageMutation),
+    deleteProfilePicture: requireAuthorization(deleteUserImageMutation),
     login: loginMutation,
   },
 });

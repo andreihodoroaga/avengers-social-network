@@ -1,4 +1,4 @@
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require("graphql");
+const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLID } = require("graphql");
 const CustomDateType = require("../customDateType");
 
 const userInputType = new GraphQLInputObjectType({
