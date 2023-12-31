@@ -1,9 +1,130 @@
 # Flow 2 
-# 1. Signup user 2 
+
+# 1. Signup user 2
+mutation signup {
+  createUser(
+    user: {
+      username: "user2"
+      password: "user2"
+      first_name: "user"
+      last_name: "2",
+      date_of_birth: "2003-03-03",
+      bio: "stu/dent",
+    }
+  ) {
+    user_id
+    username
+    first_name
+    last_name
+    date_of_birth
+    bio
+    profile_picture
+  }
+}
+
 # 2. Login user 2
+mutation login_user_2 {
+  login(username: "user2", password: "user2") {
+    token
+  }
+}
+
 # 3. Follow user 1 
+mutation follow {
+  createUserInteraction(userInteraction: {
+    user_id_initiator: 2,
+    user_id_recipient: 1,
+    interaction_type: FOLLOW
+  }) {
+    user_interaction_id
+    interaction_type
+    user_id_initiator
+    user_id_recipient
+    timestamp
+  }
+}
+
 # 4. Like user 1's post
-# 5. Login user 1
-# 6. Poke user 1 -> user 2 
-# 7. Create an event (as user 2)
-# 8. Join user 1 -> event 
+mutation like_post {
+  createPostInteraction(postInteraction: { 
+    user_id: 2,
+    post_id: 1,
+    interaction_type: LIKE
+  }) {
+    post_interaction_id
+    post_id
+    user_id
+    interaction_type
+    timestamp
+  }
+}
+
+# 5. Create an event (as user 2)
+mutation create_event {
+  createEvent(
+    event: { 
+      event_organiser_user_id: 2,
+      event_name: "Prezentare",
+      location: "FMI",
+      details: "Prezentare proiect js",
+      event_timestamp: "2024-05-02"
+    }
+  ) {
+    event_id
+    event_organiser_user_id
+    event_name
+    location
+    details
+    event_timestamp
+    event_participants
+  }
+}
+
+# 6. Login user 1
+mutation login_user_1 {
+  login(username: "user1", password: "user1") {
+    token
+  }
+}
+
+# 7. Poke user 1 -> user 2
+mutation poke {
+  createUserInteraction(userInteraction: { 
+    user_id_initiator: 1,
+    user_id_recipient: 2,
+    interaction_type: POKE
+  }) {
+    user_interaction_id
+    interaction_type
+    user_id_initiator
+    user_id_recipient
+    timestamp
+  }
+}
+
+# 8. Join event (as user 1) 
+mutation join_event {
+  participateInEvent(event_id: 1, participant_id: 1) {
+    event_participant_id
+    event_id
+    participant_id
+  }
+}
+
+# 9. View events
+query events {
+  events {
+    event_id
+    event_organiser_user_id
+    event_name
+    location
+    details
+    event_timestamp
+    event_participants
+  }
+}
+
+# 10. Withdraw from event
+mutation withdraw {
+  withdrawFromEvent(event_id: 1, participant_id: 1)
+}

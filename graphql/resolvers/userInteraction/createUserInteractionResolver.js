@@ -1,6 +1,10 @@
 const db = require("../../../models");
 
 const createUserInteractionResolver = async (_, { userInteraction }) => {
+  if (userInteraction.user_id_initiator === userInteraction.user_id_recipient) {
+    throw new Error(`You cannot ${userInteraction.interaction_type} yourself`);
+  }
+
   const userInteractionType = userInteraction.interaction_type;
 
   if (userInteractionType === "follow") {
