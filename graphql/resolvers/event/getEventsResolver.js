@@ -1,6 +1,10 @@
 const db = require("../../../models");
 
-const getEventsResolver = async () => {
+const getEventsResolver = async (_a, _b, user) => {
+    if (!user) {
+        throw new Error("Unauthorized");
+    }
+
     const events = await db.Event.findAll({
         include: [ {
             model: db.User,

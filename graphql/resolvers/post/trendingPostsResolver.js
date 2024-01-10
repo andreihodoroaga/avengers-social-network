@@ -1,6 +1,10 @@
 const db = require("../../../models");
 
-const trendingsPostsResolver = async () => {
+const trendingsPostsResolver = async (_a, _b, user) => {
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
   try {
     const twentyFourHoursAgo = new Date(); 
     twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
@@ -15,7 +19,7 @@ const trendingsPostsResolver = async () => {
       LEFT JOIN 
         UserPostInteractions ON Post.post_id = UserPostInteractions.post_id AND UserPostInteractions.createdAt >= :twentyFourHoursAgo
       GROUP BY 
-        Post.post_id, Post.user_id, Post.parent_post_id, Post.text, Post.timestamp
+        Post.post_id, Post.user_id, Post.parent_post_id, Post.text, Post.createdAt
       ORDER BY 
         interaction_count DESC
       LIMIT 50

@@ -1,6 +1,9 @@
 const db = require("../../../models");
 
-const getUsersResolver = async () => {
+const getUsersResolver = async (_a, _b, user) => {
+    if (!user) {
+        throw new Error("Unauthorized");
+    }
     const users = await db.User.findAll({
         include: [ {
             model: db.UserImage,

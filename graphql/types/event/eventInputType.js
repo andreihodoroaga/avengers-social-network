@@ -4,9 +4,6 @@ const CustomDateType = require("../customDateType");
 const eventInputType = new GraphQLInputObjectType({
   name: "EventInput",
   fields: {
-    event_organiser_user_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     event_name: {
       type: new GraphQLNonNull(GraphQLString),
     },

@@ -1,10 +1,14 @@
 const db = require("../../../models");
 const fs = require("fs");
 
-const deleteUserImageResolver = async (_, { user_id }) => {
+const deleteUserImageResolver = async (_a, _b, user) => {
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
   const targetUserImage = await db.UserImage.findOne({
     where: {
-      user_id: user_id,
+      user_id: user.user_id,
     },
   });
 

@@ -32,7 +32,6 @@ mutation login_user_2 {
 # 3. Follow user 1 
 mutation follow {
   createUserInteraction(userInteraction: {
-    user_id_initiator: 2,
     user_id_recipient: 1,
     interaction_type: FOLLOW
   }) {
@@ -47,7 +46,6 @@ mutation follow {
 # 4. Like user 1's post
 mutation like_post {
   createPostInteraction(postInteraction: { 
-    user_id: 2,
     post_id: 1,
     interaction_type: LIKE
   }) {
@@ -63,7 +61,6 @@ mutation like_post {
 mutation create_event {
   createEvent(
     event: { 
-      event_organiser_user_id: 2,
       event_name: "Prezentare",
       location: "FMI",
       details: "Prezentare proiect js",
@@ -90,7 +87,6 @@ mutation login_user_1 {
 # 7. Poke user 1 -> user 2
 mutation poke {
   createUserInteraction(userInteraction: { 
-    user_id_initiator: 1,
     user_id_recipient: 2,
     interaction_type: POKE
   }) {
@@ -104,7 +100,7 @@ mutation poke {
 
 # 8. Join event (as user 1) 
 mutation join_event {
-  participateInEvent(event_id: 1, participant_id: 1) {
+  participateInEvent(event_id: 1) {
     event_participant_id
     event_id
     participant_id
@@ -126,5 +122,5 @@ query events {
 
 # 10. Withdraw from event
 mutation withdraw {
-  withdrawFromEvent(event_id: 1, participant_id: 1)
+  withdrawFromEvent(event_id: 1)
 }

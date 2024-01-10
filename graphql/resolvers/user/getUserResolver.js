@@ -1,6 +1,10 @@
 const db = require("../../../models");
 
-const getUserResolver = async (_, { user_id }) => {
+const getUserResolver = async (_, { user_id }, user) => {
+    if (!user) {
+        throw new Error("Unauthorized");
+    }
+    
     const targetUser = await db.Event.findByPk(user_id, {
         include: [ {
             model: db.UserImage,

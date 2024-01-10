@@ -3,9 +3,6 @@ const { GraphQLNonNull, GraphQLID, GraphQLString, GraphQLInputObjectType } = req
 const userImageType = new GraphQLInputObjectType({
   name: "UserImageInput",
   fields: {
-    user_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     profile_picture_blob: {
       type: new GraphQLNonNull(GraphQLString),
     },

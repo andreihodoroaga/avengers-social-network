@@ -7,9 +7,6 @@ const userInteractionInputType = new GraphQLInputObjectType({
     interaction_type: {
       type: new GraphQLNonNull(interactionType),
     },
-    user_id_initiator: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     user_id_recipient: {
       type: new GraphQLNonNull(GraphQLID),
     }
