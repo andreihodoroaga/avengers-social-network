@@ -1,7 +1,11 @@
 const db = require("../../models");
 
 function findResolver(model) {
-    return async (_, obj) => {
+    return async (_, obj, user) => {
+        if (!user) {
+            throw new Error("Unauthorized");
+        }
+        
         const id = obj[`${model.toLowerCase()}_id`];
         const target = await db[model].findByPk(id);
 

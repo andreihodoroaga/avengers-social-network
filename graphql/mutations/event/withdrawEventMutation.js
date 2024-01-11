@@ -7,9 +7,6 @@ const withdrawEventMutation = {
   args: {
     event_id: {
       type: new GraphQLNonNull(GraphQLID),
-    },
-    participant_id: {
-      type: new GraphQLNonNull(GraphQLID),
     }
   },
   resolve: withdrawEventResolver,

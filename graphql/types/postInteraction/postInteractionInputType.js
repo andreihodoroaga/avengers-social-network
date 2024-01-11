@@ -7,9 +7,6 @@ const postInteractionInputType = new GraphQLInputObjectType({
     post_id: {
       type: new GraphQLNonNull(GraphQLID),
     },
-    user_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     interaction_type: {
       type: new GraphQLNonNull(interactionType),
     },

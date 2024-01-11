@@ -8,9 +8,6 @@ const {
 const postInputType = new GraphQLInputObjectType({
   name: "PostInput",
   fields: {
-    user_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
     parent_post_id: {
       type: GraphQLID,
     },

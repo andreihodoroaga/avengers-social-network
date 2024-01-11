@@ -4,11 +4,7 @@ const deleteUserImageResolver = require("../../resolvers/userImage/deleteUserIma
 const deleteUserImageMutation = {
   type: GraphQLBoolean,
 
-  args: {
-    user_id: {
-      type: new GraphQLNonNull(GraphQLID),
-    },
-  },
+  args: { },
   resolve: deleteUserImageResolver,
 };
 

@@ -1,11 +1,11 @@
 const db = require("../../../models");
 
-const createPostResolver = async (_, { post }) => {
-  const user = await db.User.findByPk(post.user_id);
+const createPostResolver = async (_, { post }, user) => {
   if (!user) {
-    throw new Error(`User with user_id ${post.user_id} does not exist!`);
+    throw new Error("Unauthorized");
   }
 
+  post.user_id = user.user_id;
   const newPost = await db.Post.create(post);
 
   return newPost;

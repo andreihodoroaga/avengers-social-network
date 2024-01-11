@@ -1,12 +1,11 @@
 const db = require("../../../models");
 
-const withdrawEventResolver = async (_, { event_id, participant_id }) => {
-    const user = await db.User.findByPk(participant_id);
+const withdrawEventResolver = async (_, { event_id }, user) => {
     const event = await db.Event.findByPk(event_id);
     const eventParticipant = await db.EventParticipant.findOne({
         where: {
             'event_id': event_id,
-            'participant_id': participant_id,
+            'participant_id': user.user_id,
         }
     });
 

@@ -22,28 +22,27 @@ const deleteUserImageMutation = require("./mutations/userImage/deleteUserImageMu
 const loginMutation = require("./mutations/login/loginMutation");
 
 const db = require("../models");
-const requireAuthorization = require("./operationUtils");
 
 const mutationType = new GraphQLObjectType({
   name: "Mutation",
   fields: {
     createUser: createUserMutation,
-    updateUser: requireAuthorization(updateUserMutation, ({ user_id }) => user_id),
-    deleteUser: requireAuthorization(deleteUserMutation, ({ user_id }) => user_id),
-    createPost: requireAuthorization(createPostMutation, ({ post }) => post.user_id),
-    updatePost: requireAuthorization(updatePostMutation, ({ post_id }) => db.Post.findByPk(post_id).then((post) => post.user_id)),
-    deletePost: requireAuthorization(deletePostMutation, ({ post_id }) => db.Post.findByPk(post_id).then((post) => post.user_id)),
-    createUserInteraction: requireAuthorization(createUserInteractionMutation, ({ userInteraction }) => userInteraction.user_id_initiator),
-    deleteUserInteraction: requireAuthorization(deleteUserInteractionMutation, ({ user_interaction_id }) => db.UserInteraction.findByPk(user_interaction_id).then((user_interaction) => user_interaction.user_id_initiator)),
-    createPostInteraction: requireAuthorization(createPostInteractionMutation, ({ postInteraction }) => postInteraction.user_id),
-    deletePostInteraction: requireAuthorization(deletePostInteractionMutation, ({ post_interaction_id }) => db.PostInteraction.findByPk(post_interaction_id).then((post_interaction) => post_interaction.user_id)),
-    createEvent: requireAuthorization(createEventMutation, ({ event }) => event.event_organiser_user_id),
-    updateEvent: requireAuthorization(updateEventMutation, ({ event_id }) => db.Event.findByPk(event_id).then((event) => event.event_organiser_user_id)),
-    deleteEvent: requireAuthorization(deleteEventMutation, ({ event_id }) => db.Event.findByPk(event_id).then((event) => event.event_organiser_user_id)),
-    participateInEvent: requireAuthorization(participateEventMutation, ({ participant_id }) => participant_id),
-    withdrawFromEvent: requireAuthorization(withdrawEventMutation, ({ participant_id }) => participant_id),
-    uploadProfilePicture: requireAuthorization(createUserImageMutation, ({ userImage }) => userImage.user_id),
-    deleteProfilePicture: requireAuthorization(deleteUserImageMutation, ({ user_id }) => user_id),
+    updateUser: updateUserMutation,
+    deleteUser: deleteUserMutation,
+    createPost: createPostMutation,
+    updatePost: updatePostMutation,
+    deletePost: deletePostMutation,
+    createUserInteraction: createUserInteractionMutation, 
+    deleteUserInteraction: deleteUserInteractionMutation,
+    createPostInteraction: createPostInteractionMutation, 
+    deletePostInteraction: deletePostInteractionMutation, 
+    createEvent: createEventMutation,
+    updateEvent: updateEventMutation,
+    deleteEvent: deleteEventMutation,
+    participateInEvent: participateEventMutation,
+    withdrawFromEvent: withdrawEventMutation,
+    uploadProfilePicture: createUserImageMutation,
+    deleteProfilePicture: deleteUserImageMutation,
     login: loginMutation,
   },
 });

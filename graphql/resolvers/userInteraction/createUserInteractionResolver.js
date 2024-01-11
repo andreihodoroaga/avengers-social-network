@@ -1,7 +1,12 @@
 const db = require("../../../models");
 
-const createUserInteractionResolver = async (_, { userInteraction }) => {
-  if (userInteraction.user_id_initiator === userInteraction.user_id_recipient) {
+const createUserInteractionResolver = async (_, { userInteraction }, user) => {
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+  
+  userInteraction.user_id_initiator = user.user_id;
+  if (Number(userInteraction.user_id_initiator) === Number(userInteraction.user_id_recipient)) {
     throw new Error(`You cannot ${userInteraction.interaction_type} yourself`);
   }
 

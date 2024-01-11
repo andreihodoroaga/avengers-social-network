@@ -8,9 +8,6 @@ const participateEventMutation = {
   args: {
     event_id: {
       type: new GraphQLNonNull(GraphQLID),
-    },
-    participant_id: {
-      type: new GraphQLNonNull(GraphQLID),
     }
   },
   resolve: participateEventResolver,

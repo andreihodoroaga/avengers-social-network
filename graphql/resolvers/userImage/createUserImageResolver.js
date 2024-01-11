@@ -2,7 +2,13 @@ const db = require("../../../models");
 const path = require('path');
 const fs = require('fs');
 
-const createUserImageResolver = async (_, { userImage }) => {
+const createUserImageResolver = async (_, { userImage }, user) => {
+    if (!user) {
+        throw new Error("Unauthorized");
+    }
+
+    userImage.user_id = user.user_id;
+    
     const existingUserImage = await db.UserImage.findOne({
         where: {
             user_id: userImage.user_id,
