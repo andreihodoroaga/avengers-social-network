@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       Event.belongsTo(models.User, { 
         as: "organiser", 
         foreignKey: "event_organiser_user_id", 
-        targetKey: "user_id" 
+        targetKey: "id" 
       });
     }
   }
   Event.init(
     {
-      event_id: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,

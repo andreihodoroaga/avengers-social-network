@@ -5,7 +5,7 @@ const getUserResolver = require("../../resolvers/user/getUserResolver");
 const userQuery = {
   type: userType,
   args: {
-    user_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

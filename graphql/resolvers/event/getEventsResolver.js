@@ -9,14 +9,14 @@ const getEventsResolver = async (_a, _b, user) => {
         include: [ {
             model: db.User,
             as: "event_participants",
-            attributes: ["user_id"],
+            attributes: ["id"],
         }],
     });
 
     const mappedEvents = events.map(event => {
         return {
             ...event.dataValues,
-            event_participants: event.event_participants.map(participant => participant.user_id),
+            event_participants: event.event_participants.map(participant => participant.id),
         };
     });
 

@@ -1,17 +1,17 @@
 const db = require("../../../models");
 
-const deleteUserResolver = async (_, { user_id }, user) => {
+const deleteUserResolver = async (_, { id }, user) => {
   if (!user) {
     throw new Error("Unauthorized");
   }
 
-  const targetUser = await db.User.findByPk(user_id);
+  const targetUser = await db.User.findByPk(id);
 
   if (!targetUser) {
     return null;
   }
 
-  if (user.user_id !== targetUser.user_id) {
+  if (user.id !== targetUser.id) {
     throw new Error("Unauthorized");
   }
 

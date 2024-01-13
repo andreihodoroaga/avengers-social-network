@@ -12,7 +12,7 @@ mutation signup {
       bio: "student fmi",
     }
   ) {
-    user_id
+    id
     username
     first_name
     last_name
@@ -44,7 +44,7 @@ mutation create_post {
   createPost(post: {
     text: "I love fmi <4"
   }) {
-    post_id
+    id
     user_id
     parent_post_id
     text
@@ -61,7 +61,7 @@ mutation reply_to_post {
     parent_post_id: 1,
     text: "Famous last words.."
   }) {
-    post_id
+    id
     user_id
     parent_post_id
     text

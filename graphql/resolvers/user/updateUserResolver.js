@@ -1,11 +1,11 @@
 const db = require("../../../models");
 
-const updateUserResolver = async (_, { user_id, userNew }, user) => {
-  if (!user || user_id !== user.user_id) {
+const updateUserResolver = async (_, { id, userNew }, user) => {
+  if (!user || id !== user.id) {
     throw new Error("Unauthorized");
   }
 
-  const targetUser = await db.User.findByPk(user_id);
+  const targetUser = await db.User.findByPk(id);
 
   if (!targetUser) {
     return null;

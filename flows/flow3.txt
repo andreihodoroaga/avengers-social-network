@@ -10,7 +10,7 @@ mutation create_user_3 {
       date_of_birth: "2002-02-02",
     }
   ) {
-    user_id
+    id
     username
     first_name
     last_name
@@ -33,7 +33,7 @@ mutation repost {
     post_id: 1,
     interaction_type: REPOST
   }) {
-    post_interaction_id
+    id
     post_id
     user_id
     interaction_type
@@ -43,26 +43,26 @@ mutation repost {
 
 # 4. Try to update user 1's post
 mutation malicious_post_update {
-  updatePost(post_id: 1, 
+  updatePost(id: 1, 
     post: { 
       text: "I love fmi <3"
     }
   ) {
-    post_id
+    id
     user_id
   }
 }
 
 # 5. Try to update user 2's event 
 mutation malicious_event_update {
-  updateEvent(event_id: 1, 
+  updateEvent(id: 1, 
     event: {
       event_name: "HACKED",
       event_timestamp: "2000-01-01T00:00:00",
       location: "HackerVille",
       details: "You have been hacked"
   }){
-    event_id
+    id
     event_name
   }
 }
@@ -70,7 +70,7 @@ mutation malicious_event_update {
 # 6. Get trending posts
 query trending {
   trendingPosts {
-    post_id
+    id
     user_id
     parent_post_id
     text

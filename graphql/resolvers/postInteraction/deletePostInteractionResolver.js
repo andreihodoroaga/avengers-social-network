@@ -1,17 +1,17 @@
 const db = require("../../../models");
 
-const deletePostInteractionResolver = async (_, { post_interaction_id }, user) => {
+const deletePostInteractionResolver = async (_, { id }, user) => {
   if (!user) {
     throw new Error("Unauthorized");
   }
 
-  const targetPostInteraction = await db.UserPostInteraction.findByPk(post_interaction_id);
+  const targetPostInteraction = await db.UserPostInteraction.findByPk(id);
 
   if (!targetPostInteraction) {
     return null;
   }
 
-  if (user.user_id !== targetPostInteraction.user_id) {
+  if (user.id !== targetPostInteraction.user_id) {
     throw new Error("Unauthorized");
   }
 

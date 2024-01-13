@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable("Events", {
-      event_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -16,7 +16,7 @@ module.exports = {
       },
       event_organiser_user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
@@ -45,7 +45,7 @@ module.exports = {
     });
 
     await queryInterface.createTable("EventParticipants", {
-      event_participant_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -53,13 +53,13 @@ module.exports = {
       },
       event_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Events', key: 'event_id' },
+        references: { model: 'Events', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
       participant_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },

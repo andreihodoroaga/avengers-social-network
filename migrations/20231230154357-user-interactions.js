@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable("UserInteractions", {
-      user_interaction_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -12,13 +12,13 @@ module.exports = {
       },
       user_id_initiator: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
       user_id_recipient: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },

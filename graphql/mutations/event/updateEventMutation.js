@@ -7,7 +7,7 @@ const updateEventMutation = {
   type: eventType,
 
   args: {
-    event_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     event: {

@@ -3,7 +3,7 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLString } = require(
 const userImageType = new GraphQLObjectType({
   name: "UserImage",
   fields: {
-    user_image_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     user_id: {

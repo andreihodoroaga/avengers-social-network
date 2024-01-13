@@ -7,7 +7,7 @@ const updatePostMutation = {
   type: postType,
 
   args: {
-    post_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     post: {

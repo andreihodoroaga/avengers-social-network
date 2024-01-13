@@ -10,7 +10,7 @@ const CustomTimestampType = require("../customTimestampType");
 const postType = new GraphQLObjectType({
   name: "Post",
   fields: {
-    post_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     user_id: {

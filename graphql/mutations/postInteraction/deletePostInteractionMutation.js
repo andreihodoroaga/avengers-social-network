@@ -5,7 +5,7 @@ const deletePostInteractionMutation = {
   type: GraphQLBoolean,
 
   args: {
-    post_interaction_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

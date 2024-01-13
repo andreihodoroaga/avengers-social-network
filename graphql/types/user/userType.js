@@ -4,7 +4,7 @@ const CustomDateType = require("../customDateType");
 const userType = new GraphQLObjectType({
   name: "User",
   fields: {
-    user_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     username: {

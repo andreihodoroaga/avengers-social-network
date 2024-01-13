@@ -5,11 +5,11 @@ const postInteractionType = require("../../types/postInteraction/postInteraction
 const postInteractionQuery = {
   type: postInteractionType,
   args: {
-    post_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
-  resolve: (_, { post_interaction_id }) => db.UserPostInteraction.findByPk(post_interaction_id),
+  resolve: (_, { id }) => db.UserPostInteraction.findByPk(id),
 };
 
 module.exports = postInteractionQuery;

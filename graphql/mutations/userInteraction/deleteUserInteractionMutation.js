@@ -5,7 +5,7 @@ const deleteUserInteractionMutation = {
   type: GraphQLBoolean,
 
   args: {
-    user_interaction_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

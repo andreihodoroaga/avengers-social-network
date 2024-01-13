@@ -5,7 +5,7 @@ const createUserInteractionResolver = async (_, { userInteraction }, user) => {
     throw new Error("Unauthorized");
   }
   
-  userInteraction.user_id_initiator = user.user_id;
+  userInteraction.user_id_initiator = user.id;
   if (Number(userInteraction.user_id_initiator) === Number(userInteraction.user_id_recipient)) {
     throw new Error(`You cannot ${userInteraction.interaction_type} yourself`);
   }

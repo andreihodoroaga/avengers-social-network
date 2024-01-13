@@ -12,7 +12,7 @@ mutation signup {
       bio: "stu/dent",
     }
   ) {
-    user_id
+    id
     username
     first_name
     last_name
@@ -35,7 +35,7 @@ mutation follow {
     user_id_recipient: 1,
     interaction_type: FOLLOW
   }) {
-    user_interaction_id
+    id
     interaction_type
     user_id_initiator
     user_id_recipient
@@ -49,7 +49,7 @@ mutation like_post {
     post_id: 1,
     interaction_type: LIKE
   }) {
-    post_interaction_id
+    id
     post_id
     user_id
     interaction_type
@@ -67,7 +67,7 @@ mutation create_event {
       event_timestamp: "2024-05-02"
     }
   ) {
-    event_id
+    id
     event_organiser_user_id
     event_name
     location
@@ -90,7 +90,7 @@ mutation poke {
     user_id_recipient: 2,
     interaction_type: POKE
   }) {
-    user_interaction_id
+    id
     interaction_type
     user_id_initiator
     user_id_recipient
@@ -101,7 +101,7 @@ mutation poke {
 # 8. Join event (as user 1) 
 mutation join_event {
   participateInEvent(event_id: 1) {
-    event_participant_id
+    id
     event_id
     participant_id
   }
@@ -110,7 +110,7 @@ mutation join_event {
 # 9. View events
 query events {
   events {
-    event_id
+    id
     event_organiser_user_id
     event_name
     location
@@ -122,5 +122,5 @@ query events {
 
 # 10. Withdraw from event
 mutation withdraw {
-  withdrawFromEvent(event_id: 1)
+  withdrawFromEvent(id: 1)
 }

@@ -5,7 +5,7 @@ const interactionType = require("./interactionType");
 const postInteractionType = new GraphQLObjectType({
   name: "PostInteraction",
   fields: {
-    post_interaction_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     post_id: {

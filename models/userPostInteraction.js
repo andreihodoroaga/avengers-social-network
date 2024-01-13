@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   UserPostInteraction.init({
-    post_interaction_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
