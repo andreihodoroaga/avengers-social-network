@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Event.belongsToMany(models.User, { 
         through: models.EventParticipant, 
         foreignKey: "event_id", 
+        targetKey: "id",
         otherKey: "participant_id", 
         as: "event_participants" 
       });
@@ -29,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
+      },
+      event_organiser_user_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       event_name: {

@@ -37,8 +37,16 @@ mutation follow {
   }) {
     id
     interaction_type
-    user_id_initiator
-    user_id_recipient
+    initiator {
+      username
+      first_name
+      last_name
+    }
+    recipient {
+      username
+      first_name
+      last_name
+    }
     timestamp
   }
 }
@@ -50,8 +58,13 @@ mutation like_post {
     interaction_type: LIKE
   }) {
     id
-    post_id
-    user_id
+    post {
+      text
+      timestamp
+    }
+    user {
+      username
+    }
     interaction_type
     timestamp
   }
@@ -68,12 +81,20 @@ mutation create_event {
     }
   ) {
     id
-    event_organiser_user_id
+    event_organiser {
+      username
+      first_name
+      last_name
+      bio
+    }
     event_name
     location
     details
     event_timestamp
-    event_participants
+    event_participants {
+      first_name
+      last_name
+    }
   }
 }
 
@@ -92,8 +113,16 @@ mutation poke {
   }) {
     id
     interaction_type
-    user_id_initiator
-    user_id_recipient
+    initiator {
+      username
+      first_name
+      last_name
+    }
+    recipient {
+      username
+      first_name
+      last_name
+    }
     timestamp
   }
 }
@@ -102,8 +131,17 @@ mutation poke {
 mutation join_event {
   participateInEvent(event_id: 1) {
     id
-    event_id
-    participant_id
+    event {
+      event_organiser {
+        username
+        date_of_birth
+      }
+      location
+      event_timestamp
+    }
+    participant {
+      username
+    }
   }
 }
 
@@ -111,12 +149,21 @@ mutation join_event {
 query events {
   events {
     id
-    event_organiser_user_id
+    event_organiser {
+      username
+      first_name
+      last_name
+      date_of_birth
+      bio
+    }
     event_name
     location
     details
     event_timestamp
-    event_participants
+    event_participants {
+      first_name
+      last_name
+    }
   }
 }
 
@@ -124,3 +171,5 @@ query events {
 mutation withdraw {
   withdrawFromEvent(id: 1)
 }
+
+# View events again (#9)

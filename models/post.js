@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
       Post.hasMany(models.UserPostInteraction, {
         foreignKey: "post_id",
       });
+      Post.belongsTo(models.Post, {
+        foreignKey: 'parent_post_id',
+        as: 'parentPost',
+      });
+      Post.hasMany(models.Post, {
+        foreignKey: 'parent_post_id',
+        as: 'replies',
+      });
     }
   }
 

@@ -45,8 +45,20 @@ mutation create_post {
     text: "I love fmi <4"
   }) {
     id
-    user_id
-    parent_post_id
+    user {
+      username
+      first_name
+      last_name
+      date_of_birth
+      bio
+    }
+    parent_post {
+      text
+      timestamp
+      no_likes
+      no_bookmarks
+      no_reposts
+    }
     text
     timestamp
     no_likes
@@ -62,8 +74,20 @@ mutation reply_to_post {
     text: "Famous last words.."
   }) {
     id
-    user_id
-    parent_post_id
+    user {
+      username
+      first_name
+      last_name
+      date_of_birth
+      bio
+    }
+    parent_post {
+      text
+      timestamp
+      no_likes
+      no_reposts
+      no_bookmarks
+    }
     text
     timestamp
     no_likes
