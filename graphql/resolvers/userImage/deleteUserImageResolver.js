@@ -8,7 +8,7 @@ const deleteUserImageResolver = async (_a, _b, user) => {
 
   const targetUserImage = await db.UserImage.findOne({
     where: {
-      user_id: user.user_id,
+      user_id: user.id,
     },
   });
 

@@ -7,7 +7,7 @@ const createUserImageResolver = async (_, { userImage }, user) => {
         throw new Error("Unauthorized");
     }
 
-    userImage.user_id = user.user_id;
+    userImage.user_id = user.id;
     
     const existingUserImage = await db.UserImage.findOne({
         where: {

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('UserPostInteractions', {
-      post_interaction_id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -11,13 +11,13 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
       post_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Posts', key: 'post_id' },
+        references: { model: 'Posts', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },

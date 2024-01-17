@@ -7,7 +7,7 @@ const updateUserMutation = {
   type: userType,
 
   args: {
-    user_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
     user: {

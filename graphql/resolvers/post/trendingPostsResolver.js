@@ -12,14 +12,14 @@ const trendingsPostsResolver = async (_a, _b, user) => {
     const trendingPostIdsAndCount = await db.sequelize.query(
       `
       SELECT 
-        Post.post_id,
+        Post.id,
         IFNULL(COUNT(UserPostInteractions.post_id), 0) AS interaction_count
       FROM 
         Posts AS Post
       LEFT JOIN 
-        UserPostInteractions ON Post.post_id = UserPostInteractions.post_id AND UserPostInteractions.createdAt >= :twentyFourHoursAgo
+        UserPostInteractions ON Post.id = UserPostInteractions.post_id AND UserPostInteractions.createdAt >= :twentyFourHoursAgo
       GROUP BY 
-        Post.post_id, Post.user_id, Post.parent_post_id, Post.text, Post.createdAt
+        Post.id, Post.user_id, Post.parent_post_id, Post.text, Post.createdAt
       ORDER BY 
         interaction_count DESC
       LIMIT 50
@@ -32,8 +32,8 @@ const trendingsPostsResolver = async (_a, _b, user) => {
       }
     );
 
-    const trendingPosts = await Promise.all(trendingPostIdsAndCount.map(async ({ post_id }) => {
-      return await db.Post.findByPk(post_id)
+    const trendingPosts = await Promise.all(trendingPostIdsAndCount.map(async ({ id }) => {
+      return await db.Post.findByPk(id)
     }))
 
     return trendingPosts;

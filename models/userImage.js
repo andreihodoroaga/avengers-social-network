@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   UserImage.init(
     { 
-        user_image_id: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,

@@ -14,7 +14,7 @@ const loginResolver = async (_, { username, password }, context) => {
 
   if(passwordIsValid) {
     return {
-      token: jwt.sign({ userId: user.user_id }, JWT_SECRET, {
+      token: jwt.sign({ userId: user.id }, JWT_SECRET, {
         expiresIn: '30m'
       }),
     }

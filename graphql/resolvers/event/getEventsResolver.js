@@ -5,22 +5,7 @@ const getEventsResolver = async (_a, _b, user) => {
         throw new Error("Unauthorized");
     }
 
-    const events = await db.Event.findAll({
-        include: [ {
-            model: db.User,
-            as: "event_participants",
-            attributes: ["user_id"],
-        }],
-    });
-
-    const mappedEvents = events.map(event => {
-        return {
-            ...event.dataValues,
-            event_participants: event.event_participants.map(participant => participant.user_id),
-        };
-    });
-
-    return mappedEvents;
+    return db.Event.findAll();
 };
 
 module.exports = getEventsResolver;

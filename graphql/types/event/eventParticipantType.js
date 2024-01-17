@@ -1,16 +1,24 @@
 const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLString, GraphQLList } = require("graphql");
+const eventType = require("../event/eventType")
+const userType = require("../user/userType")
 
 const eventParticipantType = new GraphQLObjectType({
   name: "EventParticipant",
   fields: {
-    event_participant_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
-    event_id: {
-      type: new GraphQLNonNull(GraphQLID),
+    event: {
+      type: new GraphQLNonNull(eventType),
+      resolve: async (source) => {
+        return await source.getEvent();
+      } 
     },
-    participant_id: {
-      type: new GraphQLNonNull(GraphQLID),
+    participant: {
+      type: new GraphQLNonNull(userType),
+      resolve: async (source) => {
+        return await source.getParticipant();
+      }
     }
   },
 });

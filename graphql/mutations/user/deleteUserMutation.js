@@ -5,7 +5,7 @@ const deleteUserMutation = {
   type: GraphQLBoolean,
 
   args: {
-    user_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

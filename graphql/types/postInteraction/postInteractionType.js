@@ -1,18 +1,26 @@
 const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLEnumType } = require("graphql");
 const CustomTimestampType = require("../customTimestampType");
 const interactionType = require("./interactionType");
+const postType = require("../post/postType");
+const userType = require("../user/userType");
 
 const postInteractionType = new GraphQLObjectType({
   name: "PostInteraction",
   fields: {
-    post_interaction_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
-    post_id: {
-      type: new GraphQLNonNull(GraphQLID),
+    post: {
+      type: new GraphQLNonNull(postType),
+      resolve: async (source) => { 
+        return await source.getPost();   
+      } 
     },
-    user_id: {
-      type: new GraphQLNonNull(GraphQLID),
+    user: {
+      type: new GraphQLNonNull(userType),
+      resolve: async (source) => { 
+        return await source.getUser();   
+      } 
     },
     interaction_type: {
       type: new GraphQLNonNull(interactionType),

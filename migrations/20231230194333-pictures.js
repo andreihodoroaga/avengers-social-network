@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable("UserImages", {
-      user_image_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -16,7 +16,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'user_id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
@@ -34,7 +34,7 @@ module.exports = {
 
     await queryInterface.changeColumn("Users", "profile_picture", {
       type: Sequelize.INTEGER,
-      references: { model: 'UserImages', key: 'user_image_id' },
+      references: { model: 'UserImages', key: 'id' },
     });
   },
 

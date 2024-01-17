@@ -12,7 +12,7 @@ const participateEventResolver = async (_, { event_id }, user) => {
 
     const eventParticipantObject = {
         'event_id': event_id, 
-        'participant_id': user.user_id,
+        'participant_id': user.id,
     }; 
 
     const existingParticipation = await db.EventParticipant.findOne({

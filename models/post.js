@@ -14,17 +14,25 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Post.belongsTo(models.User, {
         foreignKey: 'user_id',
-        targetKey: 'user_id',
+        targetKey: 'id',
       });
       Post.hasMany(models.UserPostInteraction, {
         foreignKey: "post_id",
+      });
+      Post.belongsTo(models.Post, {
+        foreignKey: 'parent_post_id',
+        as: 'parentPost',
+      });
+      Post.hasMany(models.Post, {
+        foreignKey: 'parent_post_id',
+        as: 'replies',
       });
     }
   }
 
   Post.init(
     {
-      post_id: {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,

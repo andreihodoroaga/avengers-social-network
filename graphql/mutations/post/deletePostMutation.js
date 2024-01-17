@@ -5,7 +5,7 @@ const deletePostMutation = {
   type: GraphQLBoolean,
 
   args: {
-    post_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

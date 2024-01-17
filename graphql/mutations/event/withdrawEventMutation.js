@@ -5,7 +5,7 @@ const withdrawEventMutation = {
   type: GraphQLBoolean,
 
   args: {
-    event_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     }
   },

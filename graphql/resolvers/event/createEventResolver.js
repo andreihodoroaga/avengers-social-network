@@ -5,7 +5,7 @@ const createEventResolver = async (_, { event }, user) => {
     throw new Error("Unauthorized");
   }
 
-  event.event_organiser_user_id = user.user_id;
+  event.event_organiser_user_id = user.id;
   const newEvent = await db.Event.create(event);
   return newEvent;
 };

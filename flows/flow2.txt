@@ -12,7 +12,7 @@ mutation signup {
       bio: "stu/dent",
     }
   ) {
-    user_id
+    id
     username
     first_name
     last_name
@@ -35,10 +35,18 @@ mutation follow {
     user_id_recipient: 1,
     interaction_type: FOLLOW
   }) {
-    user_interaction_id
+    id
     interaction_type
-    user_id_initiator
-    user_id_recipient
+    initiator {
+      username
+      first_name
+      last_name
+    }
+    recipient {
+      username
+      first_name
+      last_name
+    }
     timestamp
   }
 }
@@ -49,9 +57,14 @@ mutation like_post {
     post_id: 1,
     interaction_type: LIKE
   }) {
-    post_interaction_id
-    post_id
-    user_id
+    id
+    post {
+      text
+      timestamp
+    }
+    user {
+      username
+    }
     interaction_type
     timestamp
   }
@@ -67,13 +80,21 @@ mutation create_event {
       event_timestamp: "2024-05-02"
     }
   ) {
-    event_id
-    event_organiser_user_id
+    id
+    event_organiser {
+      username
+      first_name
+      last_name
+      bio
+    }
     event_name
     location
     details
     event_timestamp
-    event_participants
+    event_participants {
+      first_name
+      last_name
+    }
   }
 }
 
@@ -90,10 +111,18 @@ mutation poke {
     user_id_recipient: 2,
     interaction_type: POKE
   }) {
-    user_interaction_id
+    id
     interaction_type
-    user_id_initiator
-    user_id_recipient
+    initiator {
+      username
+      first_name
+      last_name
+    }
+    recipient {
+      username
+      first_name
+      last_name
+    }
     timestamp
   }
 }
@@ -101,26 +130,46 @@ mutation poke {
 # 8. Join event (as user 1) 
 mutation join_event {
   participateInEvent(event_id: 1) {
-    event_participant_id
-    event_id
-    participant_id
+    id
+    event {
+      event_organiser {
+        username
+        date_of_birth
+      }
+      location
+      event_timestamp
+    }
+    participant {
+      username
+    }
   }
 }
 
 # 9. View events
 query events {
   events {
-    event_id
-    event_organiser_user_id
+    id
+    event_organiser {
+      username
+      first_name
+      last_name
+      date_of_birth
+      bio
+    }
     event_name
     location
     details
     event_timestamp
-    event_participants
+    event_participants {
+      first_name
+      last_name
+    }
   }
 }
 
 # 10. Withdraw from event
 mutation withdraw {
-  withdrawFromEvent(event_id: 1)
+  withdrawFromEvent(id: 1)
 }
+
+# View events again (#9)

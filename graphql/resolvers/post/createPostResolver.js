@@ -5,7 +5,7 @@ const createPostResolver = async (_, { post }, user) => {
     throw new Error("Unauthorized");
   }
 
-  post.user_id = user.user_id;
+  post.user_id = user.id;
   const newPost = await db.Post.create(post);
 
   return newPost;

@@ -5,7 +5,7 @@ const findResolver = require("../../resolvers/findResolver");
 const postQuery = {
   type: postType,
   args: {
-    post_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },

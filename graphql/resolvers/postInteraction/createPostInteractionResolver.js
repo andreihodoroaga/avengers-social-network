@@ -19,7 +19,7 @@ const createPostInteractionResolver = async (_, { postInteraction }, user) => {
     throw new Error("Unauthorized");
   }
 
-  postInteraction.user_id = user.user_id;
+  postInteraction.user_id = user.id;
 
   if (postInteractionType === "like") {
     const previouslyLiked = await checkInteractionExists(postInteractionType, postInteraction)

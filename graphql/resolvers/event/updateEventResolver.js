@@ -1,17 +1,17 @@
 const db = require("../../../models");
 
-const updateEventResolver = async (_, { event_id, event }, user) => {
+const updateEventResolver = async (_, { id, event }, user) => {
   if (!user) {
     throw new Error("Unauthorized");
   }
 
-  const targetEvent = await db.Event.findByPk(event_id);
+  const targetEvent = await db.Event.findByPk(id);
 
   if (!targetEvent) {
     return null;
   }
 
-  if (user.user_id !== targetEvent.event_organiser_user_id) {
+  if (user.id !== targetEvent.event_organiser_user_id) {
     throw new Error("Unauthorized");
   }
 
@@ -19,7 +19,7 @@ const updateEventResolver = async (_, { event_id, event }, user) => {
     ...event,
   }, {
     where: {
-      event_id: event_id
+      event_id: id
     },
   });
 

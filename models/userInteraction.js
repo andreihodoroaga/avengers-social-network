@@ -13,18 +13,18 @@ module.exports = (sequelize, DataTypes) => {
       UserInteraction.belongsTo(models.User, { 
         as: "initiator", 
         foreignKey: "user_id_initiator", 
-        targetKey: "user_id"
+        targetKey: "id"
       });
       UserInteraction.belongsTo(models.User, {
         as: "recipient", 
         foreignKey: "user_id_recipient", 
-        targetKey: "user_id" 
+        targetKey: "id" 
       });
     }
   }
   UserInteraction.init(
     {
-      user_interaction_id: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,

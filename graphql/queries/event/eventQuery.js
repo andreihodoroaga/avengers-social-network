@@ -5,7 +5,7 @@ const getEventResolver = require("../../resolvers/event/getEventResolver");
 const eventQuery = {
   type: eventType,
   args: {
-    event_id: {
+    id: {
       type: new GraphQLNonNull(GraphQLID),
     },
   },
